@@ -1,0 +1,9 @@
+@media only screen and (max-width: 959px) { 
+    body {
+      text-align: center;
+      background-color: gray;
+      font-family: Verdana, monospace, sans-serif;
+      background-image: url('https://cdn.glitch.global/7006271d-057c-4b2f-9a99-db4bb23c0763/images%20(12).jpeg?v=1690691467094');
+      background-repeat: no-repeat;
+    }
+  }
