@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deprem Info</title>
+</head>
+<body>
+  <center>
+  <div class="earthquake">
+  <br>
+  <br>
+  <br>
+  <center>
+  <h1 style="text-align: center; color: white">En Son Deprem Bilgisi</h1>
+  <div id="depremBilgisi" style="width: 200px; height: 200px; background-color: gray; border: 2px solid white; border-radius: 20px;">
+  <script>
+    const apiUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const enSonDeprem = data.features[0];
+        const yer = enSonDeprem.properties.place;
+        const buyukluk = enSonDeprem.properties.mag;
+        const zaman = new Date(enSonDeprem.properties.time).toLocaleString();
+
+        const depremBilgisiDiv = document.getElementById("depremBilgisi");
+        depremBilgisiDiv.innerHTML = `<p style="color: white">Yer: ${yer}</p><p style="color: white">Büyüklük: ${buyukluk}</p><p style="color: white">Zaman: ${zaman}</p>`;
+      })
+      .catch(error => {
+        console.error('API\'den veri alınamadı:', error);
+      });
+  </script>
+  </div>
+  </center>
+  </body>
+  </html>
